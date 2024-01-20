@@ -53,7 +53,7 @@ export const signupfunc =
     dispatch(get_singup_request());
 
     axios
-      .post("https://brainstorm-t5ek.onrender.com/api/auth/signup", {
+      .post("https://brainstormforce.onrender.com/api/auth/signup", {
         email,
         password,
         username,  
@@ -79,7 +79,7 @@ export const loginfunc =
     dispatch(get_login_request());
     try {
       const response = await axios.post(
-        "https://brainstorm-t5ek.onrender.com/api/auth/login",
+        "https://brainstormforce.onrender.com/api/auth/login",
         {
           email,
           password,

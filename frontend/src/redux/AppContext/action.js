@@ -29,7 +29,7 @@ export const getdataData = ( selectedStatus="", selectedLaunchDate="", selectedT
 
     dispatch(get_Data_request());
     axios
-      .get(`https://brainstorm-t5ek.onrender.com/api/app/capsule?page=${currentPage}&Original_lunches=${selectedLaunchDate}&status=${selectedStatus}&type=${selectedType}`)
+      .get(`https://brainstormforce.onrender.com/api/app/capsule?page=${currentPage}&Original_lunches=${selectedLaunchDate}&status=${selectedStatus}&type=${selectedType}`)
       .then((res) => {
         dispatch(get_Data_success(res.data.capsules));
         console.log(res.data.capsules)
