@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import logo from "./Image/pp,840x830-pad,1000x1000,f8f8f8.jpg";
+import logo from "../../Image/pp,840x830-pad,1000x1000,f8f8f8.jpg";
 import { Link, useNavigate } from "react-router-dom";
 import {  toast } from "react-toastify";
 
