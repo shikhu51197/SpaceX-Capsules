@@ -13,7 +13,7 @@ const Datagrid = () => {
 
   const dispatch = useDispatch();
   const productdata = useSelector((state) => state.dataReducer.productdata);
-  console.log(productdata)
+  // console.log(productdata)
 
 
   useEffect(() => {
