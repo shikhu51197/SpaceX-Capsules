@@ -1,5 +1,4 @@
 import React from "react";
-import SearchForm from "./SearchForm";
 import { XMarkIcon } from "@heroicons/react/20/solid";
 import Navbar from "./Navbar";
 import Footer from "./Footer";
@@ -148,7 +147,7 @@ const Landing = () => {
           </div>
         </div>
       </div>
-      <SearchForm />
+  
       <Datagrid />
       <Footer />
     </>

@@ -4,8 +4,7 @@ import {
   GET_Data_Success,
   GET_Data_request,
 } from "./actionTypes";
-import { toast, ToastContainer } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
+
 
 const get_Data_request = () => {
   return {
@@ -55,11 +54,12 @@ export const SingleDatafunc = (id) => (dispatch) => {
     });
 };
 
-export const getdataData = (params = {} ,query, filter) => (dispatch) => {
-  if (filter === "") {
+export const getdataData = ( selectedStatus="", selectedLaunchDate="", selectedType="",currentPage) => (dispatch) => {
+
+
     dispatch(get_Data_request());
     axios
-      .get(`https://brainstorm-t5ek.onrender.com/api/app/capsule?Original_lunches=${query}&status=${query}&type=${query}`, params)
+      .get(`https://brainstorm-t5ek.onrender.com/api/app/capsule?page=${currentPage}&Original_lunches=${selectedLaunchDate}&status=${selectedStatus}&type=${selectedType}`)
       .then((res) => {
         dispatch(get_Data_success(res.data.capsules));
         console.log(res.data.capsules)
@@ -67,17 +67,6 @@ export const getdataData = (params = {} ,query, filter) => (dispatch) => {
       .catch((e) => {
         dispatch(get_Data_Error(e));
       });
-  } else {
-    dispatch(get_Data_request());
-    axios
-      .get(`https://brainstorm-t5ek.onrender.com/api/app/capsule?q=${filter}`)
-      .then((res) => {
-        dispatch(get_Data_success(res.data.capsules));
-        console.log(res.data.capsules)
-      })
-      .catch((e) => {
-        dispatch(get_Data_Error(e));
-      });
-  }
-};
-<ToastContainer position="top-right" />;
+ 
+}
+
