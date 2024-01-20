@@ -1,9 +1,22 @@
 import React, { useState } from "react";
 import logo from "./Image/pp,840x830-pad,1000x1000,f8f8f8.jpg";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import {  toast } from "react-toastify";
+
 
 const Navbar = () => {
   const [open, setOpen] = useState(false);
+
+
+  const token = localStorage.getItem("token");
+  const navigate = useNavigate();
+  const handleLogout = () => {
+    localStorage.removeItem("token");
+    toast.success("Logout successfull");
+    navigate("/");
+    window.location.reload();
+  };
+
 
   const handleclick = () => {
     console.log('clicked')
@@ -61,25 +74,38 @@ const Navbar = () => {
             <div className="absolute bottom-0 left-0 w-full h-1 bg-white transform scale-x-0 origin-left transition-transform duration-300 hover:scale-x-100"></div>
           </a>
         </div>
+        {token ? (
+  <div className="flex mx-auto ">
+    <a
+      href="#"
+      onClick={handleLogout}
+      className="block text-md px-4 ml-5 py-2 rounded shadow-lg hover:animate-bounce shadow-cyan-500/50 text-white font-bold hover:text-white mt-4 ring hover:ring-blue-500 hover:border-opacity-50 lg:mt-0"
+    >
+      Logout
+    </a>
+  </div>
+) : (
+  <>
+    <Link to="/signup">
+      <a
+        href="#"
+        className="block text-md px-4 py-2 rounded shadow-lg shadow-cyan-500/50 text-white ml-2 font-bold hover:text-white mt-4 hover:ring-blue-500 ring hover:border-opacity-50 lg:mt-0 hover:animate-bounce"
+      >
+        Sign Up
+      </a>
+    </Link>
+    <Link to="/login">
+      <a
+        href="#"
+        className="block text-md px-4 ml-5 py-2 rounded shadow-lg hover:animate-bounce shadow-cyan-500/50 text-white font-bold hover:text-white mt-4 ring hover:ring-blue-500 hover:border-opacity-50 lg:mt-0"
+      >
+        Login
+      </a>
+    </Link>
+  </>
+)}
 
-        <div className="flex mx-auto ">
-          <Link to="/signup">
-            <a
-              href="#"
-              className="block text-md px-4 py-2 rounded shadow-lg shadow-cyan-500/50 text-white ml-2 font-bold hover:text-white mt-4 hover:ring-blue-500 ring hover:border-opacity-50 lg:mt-0 hover:animate-bounce"
-            >
-              Sign Up
-            </a>
-          </Link>
-          <Link to="/login">
-            <a
-              href="#"
-              className="block text-md px-4 ml-5 py-2 rounded shadow-lg hover:animate-bounce shadow-cyan-500/50 text-white font-bold hover:text-white mt-4 ring hover:ring-blue-500 hover:border-opacity-50 lg:mt-0"
-            >
-              Login
-            </a>
-          </Link>
-        </div>
+
       </div>
     </nav>
   );

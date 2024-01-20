@@ -5,6 +5,8 @@ import { useNavigate } from "react-router";
 import { toast, ToastContainer } from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css';
 import { signupfunc } from '../redux/AuthContext/action';
+import Navbar from './Navbar';
+import Footer from './Footer';
 const SignUp = () => {
   
   const dispatch = useDispatch();
@@ -44,9 +46,11 @@ const SignUp = () => {
   
 
   return (
+    <>
     <div >
+    <Navbar/>
         <ToastContainer position="top-right" />
-        <div class="min-h-screen  py-6 flex flex-col justify-center sm:py-12  bg-cover" style={{ backgroundImage: 'url("https://images.unsplash.com/photo-1600303881706-b8a373dc73c3?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D")', backgroundSize: 'cover' }} >
+        <div class="min-h-screen mt-10 py-6 flex flex-col justify-center sm:py-12  bg-cover" style={{ backgroundImage: 'url("https://images.unsplash.com/photo-1600303881706-b8a373dc73c3?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D")', backgroundSize: 'cover' }} >
 	<div class="relative py-3 sm:max-w-xl sm:mx-auto">
 		<div
 			class="absolute inset-0 bg-gradient-to-r from-blue-300 to-blue-600 shadow-lg transform -skew-y-6 sm:skew-y-0 sm:-rotate-6 sm:rounded-3xl">
@@ -79,7 +83,10 @@ const SignUp = () => {
 		</div>
 	</div>
 </div>
+
     </div>
+<Footer/>
+</>
   );
 };
 
