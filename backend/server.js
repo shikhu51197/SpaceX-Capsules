@@ -1,3 +1,8 @@
+//api documentation
+import swaggerUi from 'swagger-ui-express'
+import swaggerDoc from 'swagger-jsdoc'
+
+//pacakages
 import express from "express";
 import mongoose from "mongoose";
 import bodyParser from "body-parser";
@@ -5,10 +10,31 @@ import appRoute from "./routes/capsuleroute.js"
 import cors from "cors";
 import userRoutes from "./routes/userRoute.js";
 
+//swagger api config 
+//swagger api options
+const options = {
+  definition :{
+     openapi :'3.0.0' ,
+   info:{
+    title:'Ecommerce Application' ,
+    description:'MERN Ecommerce Application'
+   } ,
+   servers:[
+    {
+      url:"https://brainstorm-t5ek.onrender.com"
+   
+    }
+   ]
+  },
+  apis:["./routes/*.js"]
+}
+const spec = swaggerDoc(options);
+
+
 
 const app = express();
 const PORT = process.env.PORT || 5000;
-const FRONTEND_URL = process.env.FRONTEND_URL || "http://localhost:3000/";
+const FRONTEND_URL = process.env.FRONTEND_URL || "https://learn-ecommerce-jkwy.vercel.app/";
 
 app.use(bodyParser.json());
 app.use(
@@ -38,6 +64,8 @@ db.on("error", (err) => {
 app.use("/api/auth", userRoutes);
 app.use("/api/app", appRoute);
 
+//homeroute root 
+app.use('/api-doc' , swaggerUi.serve , swaggerUi.setup(spec))
 
 
 app.listen(PORT, () => {

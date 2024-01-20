@@ -1,5 +1,6 @@
 import { Capsule } from "../models/Capsule.js";
 
+
 export const getCapsuleData = async (req, res) => {
   try {
     let query = {};
